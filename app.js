@@ -1,65 +1,215 @@
 let listProductHTML = document.querySelector('.listProduct');
 let listCartHTML = document.querySelector('.listCart');
+let listFavorHTML = document.querySelector('.listFavor');
 let iconCart = document.querySelector('.icon-cart');
 let iconCartSpan = document.querySelector('.icon-cart span');
+let iconFavor = document.querySelector('.icon-favor');
+let iconFavorSpan = document.querySelector('.icon-favor span');
 let body = document.querySelector('body');
+let closeFavor = document.querySelector('.closeFavor');
 let closeCart = document.querySelector('.close');
+const checkoutButton = document.getElementById("checkoutButton");
+const itemsPerPage = 9; // Number of items to display per page
+let currentPage = 1;
 let products = [
     {
         "id": 1,
-        "name": "LD01 LOUNGE CHAIR",
+        "name": "Personalisation de Pc Gamer",
         "price": 200,
-        "image": "image/1.png"
+        "image": "image/1.png",
+        dataCategorie: "pcportable"
     },
     {
         "id": 2,
-        "name": "LD02 LOUNGE CHAIR",
+        "name": "Personalisation d'accessoires",
         "price": 250,
-        "image": "image/2.png"
+        "image": "image/rectangle 31.png",
+        dataCategorie: "accessoires"
     },
     {
         "id": 3,
-        "name": "LD03 LOUNGE CHAIR",
+        "name": "Personalisation de Pc Gamer",
         "price": 290,
-        "image": "image/3.png"
+        "image": "image/3.png",
+        dataCategorie: "pcGamer"
     },
     {
         "id": 4,
-        "name": "LD04 LOUNGE CHAIR",
+        "name": "Personalisation d'accessoire",
         "price": 200,
-        "image": "image/4.png"
+        "image": "image/4.png",
+        dataCategorie: "accessoires"
     },
     {
         "id": 5,
-        "name": "LD05 LOUNGE CHAIR",
+        "name": "Personalisation d'accessoire",
         "price": 300,
-        "image": "image/5.png"
+        "image": "image/5.png",
+        dataCategorie: "accessoires"
     },
     {
         "id": 6,
-        "name": "LD06 LOUNGE CHAIR",
+        "name": "Écrans et Moniteurs PC",
         "price": 200,
-        "image": "image/6.png"
+        "image": "image/6.png",
+        dataCategorie: "chaisesEtBureauGaming"
     },
     {
         "id": 7,
-        "name": "LD06 LOUNGE CHAIR",
+        "name": "Personalisation d'accessoires",
         "price": 280,
-        "image": "image/7.png"
+        "image": "image/7.png",
+        dataCategorie: "accessoires"
     },
     {
         "id": 8,
-        "name": "LD06 LOUNGE CHAIR",
+        "name": "Écrans et Moniteurs PC",
         "price": 300,
-        "image": "image/8.png"
+        "image": "image/8.png",
+        dataCategorie: "ecrantEtMoniteursPc"
     },
     {
         "id": 9,
-        "name": "LD06 LOUNGE CHAIR",
+        "name": "Écrans et Moniteurs PC",
         "price": 100,
-        "image": "image/9.png"
+        "image": "image/9.png",
+        dataCategorie: "ecrantEtMoniteursPc"
+    },
+    {
+        "id": 2,
+        "name": "Personalisation d'accessoires",
+        "price": 250,
+        "image": "image/rectangle 31.png",
+        dataCategorie: "accessoires"
+    },
+    {
+        "id": 3,
+        "name": "Personalisation de Pc Gamer",
+        "price": 290,
+        "image": "image/3.png",
+        dataCategorie: "pcGamer"
+    },
+    {
+        "id": 4,
+        "name": "Personalisation d'accessoire",
+        "price": 200,
+        "image": "image/4.png",
+        dataCategorie: "accessoires",
+        dataCategorie: "pcGamer"
+    },
+    {
+        "id": 5,
+        "name": "Personalisation d'accessoire",
+        "price": 300,
+        "image": "image/5.png",
+        dataCategorie: "accessoires"
+    },
+    {
+        "id": 6,
+        "name": "Écrans et Moniteurs PC",
+        "price": 200,
+        "image": "image/6.png",
+        dataCategorie: "chaisesEtBureauGaming"
+    },
+    {
+        "id": 7,
+        "name": "Personalisation d'accessoires",
+        "price": 280,
+        "image": "image/7.png",
+        dataCategorie: "accessoires"
+    },
+    {
+        "id": 8,
+        "name": "Écrans et Moniteurs PC",
+        "price": 300,
+        "image": "image/8.png",
+        dataCategorie: "ecrantEtMoniteursPc"
+    },
+    {
+        "id": 11,
+        "name": "Écrans et Moniteurs PC",
+        "price": 100,
+        "image": "image/rectangle 31 (1).png",
+        dataCategorie: "ecrantEtMoniteursPc"
+    },
+    {
+        "id": 1,
+        "name": "Personalisation de Pc Gamer",
+        "price": 200,
+        "image": "image/1.png",
+        dataCategorie: "pcportable"
+    },
+    {
+        "id": 10,
+        "name": "Chaises & Bureau Gaming",
+        "price": 250,
+        "image": "image/2.png",
+        dataCategorie: "chaisesEtBureauGaming"
+    },
+    {
+        "id": 3,
+        "name": "Personalisation de Pc Gamer",
+        "price": 290,
+        "image": "image/3.png",
+        dataCategorie: "pcGamer"
+    },
+    {
+        "id": 4,
+        "name": "Personalisation d'accessoire",
+        "price": 200,
+        "image": "image/4.png",
+        dataCategorie: "accessoires"
+    },
+    {
+        "id": 5,
+        "name": "Personalisation d'accessoire",
+        "price": 300,
+        "image": "image/5.png",
+        dataCategorie: "accessoires"
+    },
+    {
+        "id": 6,
+        "name": "Chaises & Bureau Gaming",
+        "price": 200,
+        "image": "image/6.png",
+        dataCategorie: "chaisesEtBureauGaming"
+    },
+    {
+        "id": 7,
+        "name": "Personalisation d'accessoires",
+        "price": 280,
+        "image": "image/7.png",
+        dataCategorie: "accessoires"
+    },
+    {
+        "id": 8,
+        "name": "Écrans et Moniteurs PC",
+        "price": 300,
+        "image": "image/8.png",
+        dataCategorie: "ecrantEtMoniteursPc"
+    },
+    {
+        "id": 9,
+        "name": "Écrans et Moniteurs PC",
+        "price": 100,
+        "image": "image/9.png",
+        dataCategorie: "ecrantEtMoniteursPc"
+    },
+    {
+        "id": 2,
+        "name": "Personalisation d'accessoires",
+        "price": 250,
+        "image": "image/rectangle 31.png",
+        dataCategorie: "accessoires"
     }
 ];
+
+const header = document.querySelector("header");
+
+window.addEventListener ("scroll", function() {
+	header.classList.toggle ("sticky", window.scrollY > 0);
+});
+
 let cart = [];
 
 iconCart.addEventListener('click', () => {
@@ -69,22 +219,34 @@ closeCart.addEventListener('click', () => {
     body.classList.toggle('showCart');
 })
 
+let favorites = [];
+iconFavor.addEventListener('click', () => {
+    body.classList.toggle('showFavorites');
+})
+closeFavor.addEventListener('click', () => {
+    body.classList.toggle('showFavorites');
+})
+
 const addDataToHTML = () => {
-    if (products.length > 0) {
-        products.forEach(product => {
-            let newProduct = document.createElement('div');
-            newProduct.dataset.id = product.id;
-            newProduct.classList.add('item');
-            newProduct.innerHTML =
-                `<img src="${product.image}" alt="">
-                <h2>${product.name}</h2>
-                <div class="price">$${product.price}</div>
-                <button class="addCart">Add To Cart</button>
-                <button class="addCart">Add To Cart</button>`;
-            listProductHTML.appendChild(newProduct);
-        });
+    listProductHTML.innerHTML = ''; // Clear the product list
+    const startIdx = (currentPage - 1) * itemsPerPage;
+    const endIdx = startIdx + itemsPerPage;
+    
+    for (let i = startIdx; i < endIdx && i < products.length; i++) {
+        const product = products[i];
+        let newProduct = document.createElement('div');
+        newProduct.dataset.id = product.id;
+        newProduct.classList.add('item');
+        newProduct.classList.add('tems');
+        newProduct.innerHTML =
+            `<img src="${product.image}" alt="">
+            <h2>${product.name}</h2>
+            <div class="price">$${product.price}</div>
+            <button class="addCart">Add To Cart</button>
+            <button class="addToFavor">Add To Favorites</button>`;
+        listProductHTML.appendChild(newProduct);
     }
-}
+};
 
 listProductHTML.addEventListener('click', (event) => {
     let positionClick = event.target;
@@ -92,6 +254,11 @@ listProductHTML.addEventListener('click', (event) => {
         let id_product = positionClick.parentElement.dataset.id;
         addToCart(id_product);
     }
+    else if (positionClick.classList.contains('addToFavor')) {
+        let id_product = positionClick.parentElement.dataset.id;
+        addToFavorites(id_product);
+    }
+
 })
 
 const addToCart = (product_id) => {
@@ -139,9 +306,9 @@ const addCartToHTML = () => {
                 </div>
                 <div class="totalPrice">$${info.price * item.quantity}</div>
                 <div class="quantity">
-                    <span class="minus"><</span>
+                    <span class="minus">-</span>
                     <span>${item.quantity}</span>
-                    <span class="plus">></span>
+                    <span class="plus">+</span>
                 </div>
             `;
         })
@@ -177,7 +344,7 @@ const changeQuantityCart = (product_id, type) => {
                 } else {
                     cart.splice(positionItemInCart, 1);
                 }
-                break;
+            break;
         }
     }
     addCartToHTML();
@@ -192,4 +359,131 @@ const initApp = () => {
         addCartToHTML();
     }
 }
+
 initApp();
+
+const addToFavorites = (product_id) => {
+    const isAlreadyFavorited = favorites.some(item => item.product_id === product_id);
+
+    if (isAlreadyFavorited) {
+        favorites = favorites.filter(item => item.product_id !== product_id);
+    } else {
+        favorites.push({ product_id });
+    }
+
+    addFavoritesToHTML();
+    addFavoritesToMemory();
+}
+
+const addFavoritesToMemory = () => {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+}
+
+
+const addFavoritesToHTML = () => {
+    listFavorHTML.innerHTML = '';
+    let totalFavorites = favorites.length;
+    iconFavorSpan.innerText = totalFavorites;
+
+    if (favorites.length > 0) {
+        favorites.forEach(item => {
+            let newFavorItem = document.createElement('div');
+            newFavorItem.classList.add('item');
+            newFavorItem.dataset.id = item.product_id;
+
+            let positionProduct = products.findIndex(value => value.id == item.product_id);
+            let info = products[positionProduct];
+
+            listFavorHTML.appendChild(newFavorItem);
+            newFavorItem.innerHTML = `
+                <img src="${info.image}" alt="">
+                <h2>${info.name}</h2>
+                <div class="price">$${info.price}</div>
+            `;
+        });
+    }
+}
+const initFavor = () =>{
+    addDataToHTML();
+    if (localStorage.getItem('favorites')) {
+        favorites = JSON.parse(localStorage.getItem('favorites'));
+        addFavoritesToHTML();
+    }
+}
+
+initFavor();
+
+function createPaginationButtons() {
+    const filteredProducts = products.filter(product => {
+        return document.querySelector(`.listProduct .item[data-id="${product.id}"]`);
+    });
+
+    const pageCount = Math.ceil(filteredProducts.length / itemsPerPage);
+    const pagination = document.getElementById("pagination");
+    pagination.innerHTML = '';
+
+    for (let i = 1; i <= pageCount; i++) {
+        const button = document.createElement("button");
+        button.textContent = i;
+        button.addEventListener("click", () => {
+            currentPage = i;
+            addDataToHTML();
+            createPaginationButtons();
+        });
+
+        if (i === currentPage) {
+            button.classList.add("active-page");
+        }
+
+        pagination.appendChild(button);
+    }
+}
+
+
+
+createPaginationButtons();
+
+const categorieBtns = document.querySelectorAll('.categorieBtn');
+
+categorieBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const categorie = btn.getAttribute('data-categorie');
+        trierProductsParCategorie(categorie);
+    });
+});
+
+function trierProductsParCategorie(categorie) {
+    listProductHTML.innerHTML = '';
+    currentPage = 1;
+
+    for (let i = 0; i < products.length; i++) {
+        const product = products[i];
+        if (categorie === 'all' || product.dataCategorie === categorie) {
+            const newProduct = createProductElement(product);
+            listProductHTML.appendChild(newProduct);
+        }
+    }
+
+    createPaginationButtons();
+}
+function createProductElement(product) {
+    const newProduct = document.createElement('div');
+    newProduct.dataset.id = product.id;
+    newProduct.classList.add('item');
+    newProduct.classList.add('tems');
+    newProduct.innerHTML = `
+        <img src="${product.image}" alt="">
+        <h2>${product.name}</h2>
+        <div class="price">$${product.price}</div>
+        <button class="addCart">Add To Cart</button>
+        <button class="addToFavor">Add To Favorites</button>`;
+    return newProduct;
+}
+if (!categorieBtns) {
+    categorieBtns = 'initialColor';
+}
+
+checkoutButton.addEventListener("click", () => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    window.location.href = "checkout.html";
+});
