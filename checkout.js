@@ -1,90 +1,244 @@
-let listCart = [];
+document.addEventListener("DOMContentLoaded", () => {
+    const cartItemsElement = document.getElementById("cartItems");
+    const cartTotalElement = document.getElementById("cartTotal");
+    const checkoutButton = document.getElementById("checkoutButton");
 
-// Define your product data as an array of objects
-let products = [
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const products = [
         {
             "id": 1,
-            "name": "Product 1",
-            "price": 520,
-            "image": "images/1.webp"
+            "name": "Personalisation de Pc Gamer",
+            "price": 200,
+            "image": "image/1.png",
+            dataCategorie: "pcportable"
         },
         {
             "id": 2,
-            "name": "Product 2",
-            "price": 220,
-            "image": "images/2.webp"
+            "name": "Personalisation d'accessoires",
+            "price": 250,
+            "image": "image/rectangle 31.png",
+            dataCategorie: "accessoires"
         },
         {
             "id": 3,
-            "name": "Product 3",
-            "price": 250,
-            "image": "images/3.webp"
-        }
-        ,
+            "name": "Personalisation de Pc Gamer",
+            "price": 290,
+            "image": "image/3.png",
+            dataCategorie: "pcGamer"
+        },
         {
             "id": 4,
-            "name": "Product 4",
-            "price": 420,
-            "image": "images/4.webp"
+            "name": "Personalisation d'accessoire",
+            "price": 200,
+            "image": "image/4.png",
+            dataCategorie: "accessoires"
         },
         {
             "id": 5,
-            "name": "Product 5",
-            "price": 120,
-            "image": "images/5.webp"
+            "name": "Personalisation d'accessoire",
+            "price": 300,
+            "image": "image/5.png",
+            dataCategorie: "accessoires"
         },
         {
             "id": 6,
-            "name": "Product 6",
-            "price": 120,
-            "image": "images/6.webp"
+            "name": "Écrans et Moniteurs PC",
+            "price": 200,
+            "image": "image/6.png",
+            dataCategorie: "chaisesEtBureauGaming"
+        },
+        {
+            "id": 7,
+            "name": "Personalisation d'accessoires",
+            "price": 280,
+            "image": "image/7.png",
+            dataCategorie: "accessoires"
+        },
+        {
+            "id": 8,
+            "name": "Écrans et Moniteurs PC",
+            "price": 300,
+            "image": "image/8.png",
+            dataCategorie: "ecrantEtMoniteursPc"
+        },
+        {
+            "id": 9,
+            "name": "Écrans et Moniteurs PC",
+            "price": 100,
+            "image": "image/9.png",
+            dataCategorie: "ecrantEtMoniteursPc"
+        },
+        {
+            "id": 2,
+            "name": "Personalisation d'accessoires",
+            "price": 250,
+            "image": "image/rectangle 31.png",
+            dataCategorie: "accessoires"
+        },
+        {
+            "id": 3,
+            "name": "Personalisation de Pc Gamer",
+            "price": 290,
+            "image": "image/3.png",
+            dataCategorie: "pcGamer"
+        },
+        {
+            "id": 4,
+            "name": "Personalisation d'accessoire",
+            "price": 200,
+            "image": "image/4.png",
+            dataCategorie: "accessoires",
+            dataCategorie: "pcGamer"
+        },
+        {
+            "id": 5,
+            "name": "Personalisation d'accessoire",
+            "price": 300,
+            "image": "image/5.png",
+            dataCategorie: "accessoires"
+        },
+        {
+            "id": 6,
+            "name": "Écrans et Moniteurs PC",
+            "price": 200,
+            "image": "image/6.png",
+            dataCategorie: "chaisesEtBureauGaming"
+        },
+        {
+            "id": 7,
+            "name": "Personalisation d'accessoires",
+            "price": 280,
+            "image": "image/7.png",
+            dataCategorie: "accessoires"
+        },
+        {
+            "id": 8,
+            "name": "Écrans et Moniteurs PC",
+            "price": 300,
+            "image": "image/8.png",
+            dataCategorie: "ecrantEtMoniteursPc"
+        },
+        {
+            "id": 11,
+            "name": "Écrans et Moniteurs PC",
+            "price": 100,
+            "image": "image/rectangle 31 (1).png",
+            dataCategorie: "ecrantEtMoniteursPc"
+        },
+        {
+            "id": 1,
+            "name": "Personalisation de Pc Gamer",
+            "price": 200,
+            "image": "image/1.png",
+            dataCategorie: "pcportable"
+        },
+        {
+            "id": 10,
+            "name": "Chaises & Bureau Gaming",
+            "price": 250,
+            "image": "image/2.png",
+            dataCategorie: "chaisesEtBureauGaming"
+        },
+        {
+            "id": 3,
+            "name": "Personalisation de Pc Gamer",
+            "price": 290,
+            "image": "image/3.png",
+            dataCategorie: "pcGamer"
+        },
+        {
+            "id": 4,
+            "name": "Personalisation d'accessoire",
+            "price": 200,
+            "image": "image/4.png",
+            dataCategorie: "accessoires"
+        },
+        {
+            "id": 5,
+            "name": "Personalisation d'accessoire",
+            "price": 300,
+            "image": "image/5.png",
+            dataCategorie: "accessoires"
+        },
+        {
+            "id": 6,
+            "name": "Chaises & Bureau Gaming",
+            "price": 200,
+            "image": "image/6.png",
+            dataCategorie: "chaisesEtBureauGaming"
+        },
+        {
+            "id": 7,
+            "name": "Personalisation d'accessoires",
+            "price": 280,
+            "image": "image/7.png",
+            dataCategorie: "accessoires"
+        },
+        {
+            "id": 8,
+            "name": "Écrans et Moniteurs PC",
+            "price": 300,
+            "image": "image/8.png",
+            dataCategorie: "ecrantEtMoniteursPc"
+        },
+        {
+            "id": 9,
+            "name": "Écrans et Moniteurs PC",
+            "price": 100,
+            "image": "image/9.png",
+            dataCategorie: "ecrantEtMoniteursPc"
+        },
+        {
+            "id": 2,
+            "name": "Personalisation d'accessoires",
+            "price": 250,
+            "image": "image/rectangle 31.png",
+            dataCategorie: "accessoires"
         }
-    
-];
+    ];
 
-function checkCart() {
-    var cookieValue = document.cookie
-        .split('; ')
-        .find(row => row.startsWith('listCart='));
-    if (cookieValue) {
-        listCart = JSON.parse(cookieValue.split('=')[1]);
-    }
-}
-checkCart();
-addCartToHTML();
-
-function addCartToHTML() {
-    // clear data default
-    let listCartHTML = document.querySelector('.returnCart .list');
-    listCartHTML.innerHTML = '';
-
-    let totalQuantityHTML = document.querySelector('.totalQuantity');
-    let totalPriceHTML = document.querySelector('.totalPrice');
-    let totalQuantity = 0;
-    let totalPrice = 0;
-
-    // if has product in Cart
-    if (listCart) {
-        listCart.forEach(product => {
+    function calculateCartTotal() {
+        let total = 0;
+        for (const item of cart) {
+            const product = products.find((p) => p.id === item.product_id);
             if (product) {
-                let newCart = document.createElement('div');
-                newCart.classList .add('item');
-                newCart.innerHTML =
-                    `<img src="${product.image}">
-                    <div class="info">
-                        <div class="name">${product.name}</div>
-                        <div class="price">$${product.price}/1 product</div>
-                    </div>
-                    <div class="quantity">${product.quantity}</div>
-                    <div class="returnPrice">$${product.price * product.quantity}</div>`;
-                listCartHTML.appendChild(newCart);
-                totalQuantity = totalQuantity + product.quantity;
-                totalPrice = totalPrice + (product.price * product.quantity);
+                total += product.price * item.quantity;
             }
-        });
+        }
+        return total;
     }
-    totalQuantityHTML.innerText = totalQuantity;
-    totalPriceHTML.innerText = '$' + totalPrice;
-}
+    function updateCartDisplay() {
+        cartItemsElement.innerHTML = "";
 
-// Add event listeners, update the cart, etc., as needed
+        for (const item of cart) {
+            const product = products.find((p) => p.id === item.product_id);
+            if (product) {
+                const cartItem = document.createElement("div");
+                cartItem.classList.add("cart-item");
+                cartItem.innerHTML = `
+                    <div class="cart-item-info">
+                        <img src="${product.image}" alt="${product.name}">
+                        <div>
+                            <h3>${product.name}</h3>
+                            <p>Price: $${product.price}</p>
+                            <p>Quantity: ${item.quantity}</p>
+                        </div>
+                    </div>
+                `;
+                cartItemsElement.appendChild(cartItem);
+            }
+        }
+
+        const total = calculateCartTotal();
+        cartTotalElement.innerHTML = `Total: $${total}`;
+    }
+    updateCartDisplay();
+
+    checkoutButton.addEventListener("click", () => {
+        cart.length = 0;
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartDisplay(); 
+        alert("Checkout completed successfully!");
+    });
+});
