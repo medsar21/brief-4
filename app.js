@@ -242,6 +242,7 @@ const addDataToHTML = () => {
             `<img src="${product.image}" alt="">
             <h2>${product.name}</h2>
             <div class="price">$${product.price}</div>
+            <button class="customizeProduct">Customize</button>
             <button class="addCart">Add To Cart</button>
             <button class="addToFavor">Add To Favorites</button>`;
         listProductHTML.appendChild(newProduct);
@@ -258,8 +259,16 @@ listProductHTML.addEventListener('click', (event) => {
         let id_product = positionClick.parentElement.dataset.id;
         addToFavorites(id_product);
     }
+    else if (positionClick.classList.contains('customizeProduct')) {
+        let id_product = positionClick.parentElement.dataset.id;
+        redirectToCustomizationPage(id_product);
+    }
 
 })
+function redirectToCustomizationPage(id_product) {
+    // Assuming your customization page is named customize.html
+    window.location.href = `personnalisation.html?productId=${id_product}`;
+}
 
 const addToCart = (product_id) => {
     let positionThisProductInCart = cart.findIndex((value) => value.product_id == product_id);
@@ -439,6 +448,95 @@ function createPaginationButtons() {
     }
 }
 
+const customizationContainer = document.getElementById("product-customization");
+const applyCustomizationButton = document.getElementById("apply-customization");
+
+let selectedProductId = null;
+
+function createCustomizationButtons(product) {
+    customizationContainer.innerHTML = ""; // Clear previous customization options
+
+    // Add customization options based on the product type or category
+    if (product.dataCategorie === "pcGamer") {
+        // Add PC customization options (color, RAM, storage, etc.)
+        customizationContainer.innerHTML = `
+            <label for="color">Color:</label>
+            <select id="color">
+                <option value="red">Red</option>
+                <option value="blue">Blue</option>
+                <option value="green">Green</option>
+            </select>
+
+            <label for="ram">RAM:</label>
+            <select id="ram">
+                <option value="4GB">4GB</option>
+                <option value="8GB">8GB</option>
+                <option value="16GB">16GB</option>
+            </select>
+
+            <label for="storage">Storage:</label>
+            <select id="storage">
+                <option value="256GB">256GB</option>
+                <option value="512GB">512GB</option>
+                <option value="1TB">1TB</option>
+            </select>
+        `;
+    } else {
+        // Add generic customization options (you can customize this based on your needs)
+        customizationContainer.innerHTML = `
+            <label for="color">Color:</label>
+            <select id="color">
+                <option value="black">Black</option>
+                <option value="white">White</option>
+                <option value="silver">Silver</option>
+            </select>
+
+            <!-- Add more customization options as needed -->
+        `;
+    }
+
+    selectedProductId = product.id; // Set the selected product ID
+}
+
+function updateDisplayedProduct() {
+    // Get selected customization options
+    const color = document.getElementById("color").value;
+    const ram = document.getElementById("ram") ? document.getElementById("ram").value : null;
+    const storage = document.getElementById("storage") ? document.getElementById("storage").value : null;
+
+    // Update the displayed product with the selected customization
+    const productDisplay = document.querySelector(".product-display");
+    productDisplay.innerHTML = `
+        <img src="${selectedProduct.image}" alt="${selectedProduct.name}" style="border: 2px solid ${color};">
+        <h2>${selectedProduct.name}</h2>
+        <p>Price: $${selectedProduct.price}</p>
+        <p>Customization: Color - ${color}${ram ? `, RAM - ${ram}` : ""}${storage ? `, Storage - ${storage}` : ""}</p>
+    `;
+}
+
+function handleProductCustomization(product) {
+    // Create customization buttons when a product is selected
+    createCustomizationButtons(product);
+
+    // Show the customization container
+    customizationContainer.classList.remove("hidden");
+
+    // Add event listener for the "Apply Customization" button
+    applyCustomizationButton.addEventListener("click", updateDisplayedProduct);
+}
+
+// Event listener for the product items
+listProductHTML.addEventListener("click", (event) => {
+    const productItem = event.target.closest(".item");
+    if (productItem) {
+        const productId = productItem.dataset.id;
+        const selectedProduct = products.find((product) => product.id === parseInt(productId));
+
+        if (selectedProduct) {
+            handleProductCustomization(selectedProduct);
+        }
+    }
+});
 
 
 createPaginationButtons();
