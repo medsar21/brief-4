@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Customization Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Viga' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Ruda' rel='stylesheet'>
+    <link href="https://fonts.cdnfonts.com/css/metrophobic" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Heebo' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Monofett' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Zen Dots' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Lilita One' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Luckiest Guy' rel='stylesheet'>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="title">ARK</div>
+            <div class="menu-toggle">
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+            </div>
+            <div class="nav">
+                <a href="home.html" class="menu">Home</a>
+                <a href="catalogue.html" class="menu">Catalogue</a>
+                <a href="personnalisation.html" class="menu">Personnalisation</a>
+                <a href="checkout.html" class="menu">Devis</a>
+                <a href="about.html" class="menu">About Us</a>
+            </div>
+            <div class="icon-cart">
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1"/>
+                </svg>
+                <span>0</span>
+            </div>
+            <div class="icon-favor">
+                <img src="image/Pixel Heart.png" alt="Heart">
+                <span>0</span>
+            </div>
+            <a href="contactus.html" class="contact">Contact Us</a>
+            </div>
+        </header>
+        <div class="botton">^</div>
+
+        <div id="catalogue hidden">
+            <div class="listProduct hidden"></div>
+            <div id="pagination" class="pages hidden"></div>
+        </div>
+
+        <div class="cartTab">
+            <div>
+                <h1>Shopping Cart</h1>
+                <button class="close"><img src="image/close.png" alt="close"></button>
+            </div>
+            <div class="listCart">
+            </div>
+            <div class="btn">
+                <button class="close"><a href="checkout.html">valider</a></button>
+                <button class="checkOut"><a href="checkout.html">CHECKOUT</a></button>
+            </div>
+        </div>
+        <div class="cartFavor">
+            <div>
+                <h1>Favorites products</h1>
+                <button class="closeFavor"><img src="image/close.png" alt="close"></button>
+            </div>
+            <div class="listFavor">
+            </div>
+            <div class="btn">
+                <button class="checkOutFavor"><a href="checkout.html" class="out">Vlider</a></button>
+                <button class="checkOut"><a href="checkout.html" class="out">CHECKOUT</a></button>
+            </div>
+        </div>
+        <h1 class="titre text-7xl font-zen-dots bg-gradient-to-b from-red-500 to-white text-transparent">ARKADE</h1>
+        <br><br>
+        <div class="customization-content flex flex-wrap ml-48 gap-11 items-center">
+            <div class="product-display ">
+                <!-- The selected and customized product will be displayed here -->
+                
+            </div>
+            <div id="product-customization" class="hidden flex flex-col ">
+                <!-- Customization options will be added here via JavaScript -->
+                
+            </div>
+        </div>
+        <button id="apply-customization " class="text-white font-DoppioOne text-20 font-normal h-14 px-20 rounded-full bg-black  no-underline w-fit">Apply Customization</button>
+        <div class="colors">
+            <div class="color1"></div>
+            <div class="color2"></div>
+            <div class="color3"></div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <hr class="footer-horizontale">
+            <h1 class="footer-title">NEED HELP ?</h1>
+            <hr class="footer-horizontale">
+        </div>
+        <br>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h2 class="footer-subtitle">A COMPLETE FAQ</h2>
+                <hr class="section-divider">
+                <h3 class="footer-subtitle">AND DETAILED ANSWERS</h3>
+                <p class="footer-text">Others may have had the same questions</p>
+                <br>
+                <a class="footer-link" href="">FAQ</a>
+                <br><br>
+                <p class="footer-text">Did not find what you were looking for? Contact us!</p>
+                <br>
+                <a class="footer-link" href="">Contact Us</a>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-section">
+                <h2 class="footer-subtitle">GAMING EXPERTS</h2>
+                <hr class="section-divider">
+                <h3 class="footer-subtitle">AT YOUR SERVICE</h3>
+                <p class="footer-text">By Phone (Monday-Friday: 9h-13h30)</p>
+                <br>
+                <a class="footer-link">+212-123456789</a>
+                <br><br>
+                <p class="footer-text">CHECK US OUT ON SOCIAL MEDIA</p>
+                <div class="social-media-icons">
+                    <img src="image/instagramme.png" alt="Instagram" class="insta">
+                    <img src="image/facebook.png" alt="Facebook" class="facebook">
+                    <img src="image/whatsapp.png" alt="WhatsApp" class="whatsapp">
+                </div>
+            </div>
+        </div>
+        <p class="footer-right">ALL RIGHTS RESERVED Â© Nightcrawler 2023</p>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        let botton = document.querySelector('.botton');
+        window.onscroll=function(){
+            if (scrollY>200){
+                botton.style.display='flex';
+            } else{
+                botton.style.display='none';
+            }
+        }
+
+        botton.onclick = function(){
+            scroll({
+                left: 0,
+                top: 0,
+                behavior: "smooth"
+            })
+        }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Retrieve the product ID from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('productId');
+
+            // Find the product in the array of products
+            const selectedProduct = products.find(product => product.id === parseInt(productId));
+
+            // Check if the product is found
+            if (selectedProduct) {
+                // Display the product on the customization page
+                const productDisplay = document.querySelector(".product-display");
+                productDisplay.innerHTML = `
+                    <div class="cover"></div>
+                    <img src="${selectedProduct.image}" alt="${selectedProduct.name}" style="border: 2px solid ${selectedProduct.defaultColor};">
+                    <h2 class="text-white text-2xl">${selectedProduct.name}</h2>
+                    <p class="text-white text-3xl">Price: $${selectedProduct.price}</p>
+                `;
+
+                // Handle customization for the selected product
+                handleProductCustomization(selectedProduct);
+            } else {
+                // Redirect to the home page if the product is not found
+                window.location.href = "home.html";
+            }
+        });
+
+        function handleProductCustomization(product) {
+            // Create customization buttons when a product is selected
+            createCustomizationButtons(product);
+
+            // Show the customization container
+            const customizationContainer = document.getElementById("product-customization");
+            customizationContainer.classList.remove("hidden");
+
+            // Add event listener for the "Apply Customization" button
+            const applyCustomizationButton = document.getElementById("apply-customization");
+            applyCustomizationButton.addEventListener("click", updateDisplayedProduct);
+        }
+
+        function createCustomizationButtons(product) {
+            const customizationContainer = document.getElementById("product-customization");
+            customizationContainer.innerHTML = ""; // Clear previous customization options
+
+            if (product.dataCategorie === "pcGamer") {
+                // Add PC customization options (color, RAM, storage, etc.)
+                createDropdown("color", product.colorOptions);
+                createDropdown("ram", product.ramOptions);
+                createDropdown("storage", product.storageOptions);
+                createDropdown("campany", product.companyOptions);
+                
+            } else if (product.dataCategorie === "pcportable") {
+                // Add PC Portable customization options
+                createDropdown("color", product.colorOptions);
+                createDropdown("company", product.companyOptions);
+            } else {
+                // Add generic customization options (color, company, etc.)
+                createDropdown("color", product.colorOptions);
+                createDropdown("company", product.companyOptions);
+                // Add more customization options as needed
+            }
+        }
+
+        function createDropdown(id, options) {
+            const customizationContainer = document.getElementById("product-customization");
+            const label = document.createElement("label");
+            label.setAttribute("for", id);
+            label.textContent = `${id.charAt(0).toUpperCase() + id.slice(1)}:`;
+
+            const select = document.createElement("select");
+            select.setAttribute("id", id);
+
+            options.forEach(option => {
+                const optionElement = document.createElement("option");
+                optionElement.setAttribute("value", option);
+                optionElement.textContent = option;
+                select.appendChild(optionElement);
+            });
+
+            customizationContainer.appendChild(label);
+            customizationContainer.appendChild(select);
+        }
+
+        function updateDisplayedProduct() {
+            // Get selected customization options
+            const color = document.getElementById("color").value;
+            const ram = document.getElementById("ram") ? document.getElementById("ram").value : null;
+            const storage = document.getElementById("storage") ? document.getElementById("storage").value : null;
+            const company = document.getElementById("company") ? document.getElementById("company").value : null;
+
+            // Update the displayed product with the selected customization
+            const productDisplay = document.querySelector(".product-display");
+            const selectedProduct = products.find((product) => product.id === parseInt(selectedProductId));
+
+            productDisplay.innerHTML = `
+                <img src="${selectedProduct.image}" alt="${selectedProduct.name}" style="border: 2px solid ${color};">
+                <h2 class="text-white text-3xl">${selectedProduct.name}</h2>
+                <p class="text-white text-3xl">Price: $${selectedProduct.price}</p>
+                <p class="text-white text-3xl">Customization: Color - ${color}${ram ? `, RAM - ${ram}` : ""}${storage ? `, Storage - ${storage}` : ""}${company ? `, Company - ${company}` : ""}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

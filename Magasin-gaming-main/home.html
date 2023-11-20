@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./dist/output.css"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Viga' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Ruda' rel='stylesheet'>
+    <link href="https://fonts.cdnfonts.com/css/metrophobic" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Heebo' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Monofett' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Zen Dots' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Lilita One' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Luckiest Guy' rel='stylesheet'>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: '#da373d',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      header{
+        position: none;
+        margin-left: 0;
+        width: 100%;
+      }
+      .sticky{
+        height: auto;
+      }
+      *{
+        box-sizing: none;
+      }
+      
+      @media only screen and (max-width: 768px) {
+    .listProduct{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .menu-toggle {
+        display: flex;
+        margin-top: 0px;
+        margin-left: 30px;
+        z-index: 1001;
+    }
+    .menu-toggle2 {
+        display: flex;
+        align-items: end;
+        width: 90%;
+        height: 30px;
+        background-color: #101010;
+        margin-top: 0px;
+        color: #eee;
+        margin-left: 30px;
+        z-index: 1001;
+    }
+    .menu-toggle3 {
+        display: flex;
+        align-items: end;
+        width: 450px;
+        height: 30px;
+        background-color: #101010;
+        margin-top: 40px;
+        color: #eee;
+        margin-left: 30px;
+        z-index: 1001;
+    }
+    .burger-line {
+        width: 35px;
+        height: 7px;
+        background-color: #fff;
+        margin: 10px 10;
+    }
+    .nav{
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        position: absolute;
+        width: 200px;
+        height: 300px;
+        top: 100px;
+        left: 130px;
+        background-color: #640505;
+        z-index: 1;
+        padding-right: 40px;
+        align-items: center;
+    }
+    .nav.active {
+        display: flex;
+    }
+
+    .list-before{
+        width: 400px;
+        height: 500px;
+        background-color: #ffffff;
+        margin-top: 50px;
+        border-radius: 10px;
+        display: none;
+        flex-direction: column;
+        padding: 5px;
+    }
+    .list-before.active{
+        display: flex;
+    }
+
+    .list-after{
+        width: 400px;
+        height: 500px;
+        background-color: #ffffff;
+        margin-top: 50px;
+        border-radius: 10px;
+        display: none;
+        flex-direction: column;
+        padding: 5px;
+    }
+
+    .list-after.active{
+        display: flex;
+    }
+    
+    .menu{
+        color: #fff;
+        width: 200px;
+        text-decoration: none;
+        margin-top: 20px;
+        align-items: center;
+    }
+    .menu :hover{
+        background-color: #000;
+        color: #eee;
+    }
+}
+    </style>
+
+</head>
+<body >
+  
+  <div class="container">
+    <header class="flex justify-between items-center p-4">
+      <div class="title text-4xl font-Akronim">ARK</div>
+      <div class="menu-toggle flex flex-col cursor-pointer md:hidden">
+          <div class="burger-line w-6 h-px bg-white my-1"></div>
+          <div class="burger-line w-6 h-px bg-white my-1"></div>
+          <div class="burger-line w-6 h-px bg-white my-1"></div>
+      </div>
+      <nav class="nav hidden md:flex flex-row space-x-9">
+          <a href="home.html" class="menu">Home</a>
+          <a href="catalogue.html" class="menu">Catalogue</a>
+          <a href="personnalisation.html" class="menu">Personnalisation</a>
+          <a href="checkout.html" class="menu">Devis</a>
+          <a href="about.html" class="menu">About Us</a>
+      </nav>
+      <div class="icon-cart relative">
+          <svg class="w-30 h-33" aria-hidden="true" fill="none" viewBox="0 0 18 20" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1"/>
+          </svg>
+          <span class="absolute bg-red-500 w-6 h-6 flex items-center justify-center rounded-full text-white top-1/4 right-0">0</span>
+      </div>
+      <div class="icon-favor relative">
+          <img class="w-50 h-38" src="image/Pixel Heart.png" alt="Heart">
+          <span class="absolute bg-red-500 w-6 h-6 flex items-center justify-center rounded-full text-white top-1/4 right-0">0</span>
+      </div>
+      <a href="contactus.html" class="contact text-lg border-3 border-red-500 rounded-full px-6 py-2 flex items-center justify-center">Contact Us</a>
+  </header>
+  <div class="botton">^</div>
+  
+        <div id="catalogue hidden">
+          <div class="listProduct hidden"></div>
+          <div id="pagination" class="pages hidden"></div>
+        </div>
+      
+      <div class="promo text-center">
+          <h1 class="titre text-7xl font-zen-dots bg-gradient-to-b from-red-500 to-white text-transparent">ARKADE</h1>
+          <p class="text1 text-2xl text-gray-200">"Unlock a world of gaming wonders at Arkade. Elevate your playtime with our treasure trove of games, consoles, and gear."</p>
+          <h2 class="off font-monofett text-9xl font  ">Offers</h2>
+          <br><br>
+          <div class="first-cards flex ">
+            <div class="pic">
+              <img src="image/Chaises & Bureau Gaming.jpg" alt="accessoires">
+              <div class="promotion">-40%</div>
+              <div class="first-price">500$</div>
+              <div class="price-promo">445$</div>
+          </div>
+          <div class="pic">
+              <img src="image/pc_gamer.jpg" alt="accessoires">
+              <div class="promotion">-50%</div>
+              <div class="first-price">400$</div>
+              <div class="price-promo">305$</div>
+          </div>
+          <div class="pic">
+              <img src="image/setupgamer.jpg" alt="accessoires">
+              <div class="promotion">-10%</div>
+              <div class="first-price">600$</div>
+              <div class="price-promo">445$</div>
+          </div>
+              </div>
+        </div>
+          <br><br>
+          <div class="photo123 flex justify-center gap-10 items-center">
+              <div class="ph123 flex flex-col gap-10">
+                  <img src="image/slide-combo-helium-02-1681x800-1 1.png" alt="" class="w-[559.623px] h-[226px]">
+                  <img src="image/Rectangle 66.png" alt="" class="w-[559.623px] h-[226px]">
+              </div>
+              <img src="image/Kit-ARGON-The-G-LAB 1.png" alt="" class="w-[610px] h-[528px]">
+          </div>
+          <div class="vrcf flex justify-between items-center flex-wrap">
+              <div class="vrcf1 ml-10 flex flex-col">
+                  <div class="p1 text-white font-heebo text-3xl w-[604px] h-[100px] text-left drop-shadow-xl">
+                      <p>Composez dès maintenant le PC gamer de vos rêves !</p>
+                  </div>
+                  <div class="p2 text-white  font-metrophobic text-1xl w-[550px] text-left">
+                      <p>Avec notre configurateur de PC simple et clair. SETUP GAME vous propose une large sélection de composants matériels PC de haute qualité et à jour qui sont parfaitement adaptés. Achetez maintenant votre PC individuel à un prix raisonnable.</p>
+                  </div>
+                  <a class="text-white font-DoppioOne text-20 font-normal py-5 px-20 rounded-full bg-black  no-underline w-fit " href="">CONFIGURER VOTRE PC</a>
+              </div>
+              <img src="image/Pc-Builder-Section-Hero 1.png" alt="" class="w-[600px] h-[550px]">
+          </div>
+          <h2 class="off font-monofett text-9xl font  ">TOP CATEGORISE</h2>
+          <br><br>
+          <div class="first-cards flex justify-evenly flex-wrap items-center ">
+              <div class="pic relative">
+                  <img src="./3657f027e877f6244ae101b190e06915.jpg" alt="accessoires" class="w-60 h-96 brightness-50">
+                  <h2 class="absolute top-0 p2 text-white  font-metrophobic text-3xl left-5 text-left">Écrans et Moniteurs PC</h2>
+                  <div class="promotion1 absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-700 text-white text-lg p-4 opacity-0 hover:opacity-100  rounded-full px-10 border-inherit border-4 bg-transparent">j'achet</div>
+              </div>
+              <div class="pic relative ">
+                  <img src="./3657f027e877f6244ae101b190e06915.jpg" alt="accessoires" class="w-60 h-96 brightness-50">
+                  <h2 class="absolute top-0 p2 text-white  font-metrophobic text-3xl left-5 text-left">Écrans et Moniteurs PC</h2>
+                  <div class="promotion1 absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-700 text-white text-lg  p-4 opacity-0 hover:opacity-100  rounded-full px-10 border-inherit border-4 bg-transparent">j'achet</div>
+              </div>
+              <div class="pic relative ">
+                  <img src="./3657f027e877f6244ae101b190e06915.jpg" alt="accessoires" class="w-60 h-96 brightness-50 ">
+                  <h2 class="absolute top-0 p2 text-white  font-metrophobic text-3xl left-5 text-left">Écrans et Moniteurs PC</h2>
+                  <div class="promotion1 absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-700 text-white text-lg  p-4 opacity-0 hover:opacity-100  rounded-full px-10 border-inherit border-4 bg-transparent">j'achet</div>
+              </div>
+              <div class="pic relative">
+                  <img src="./3657f027e877f6244ae101b190e06915.jpg" alt="accessoires" class="w-60 h-96 brightness-50">
+                  <h2 class="absolute top-0 p2 text-white  font-metrophobic text-3xl left-5 text-left">Écrans et Moniteurs PC</h2>
+                  <div class="promotion1 absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-700 text-white text-lg  p-4 opacity-0 hover:opacity-100  rounded-full px-10 border-inherit border-4 bg-transparent">j'achet</div>
+              </div>
+              <div class="pic relative">
+                  <img src="./3657f027e877f6244ae101b190e06915.jpg" alt="accessoires" class="w-60 h-96 brightness-50">
+                  <h2 class="absolute top-0 p2 text-white  font-metrophobic text-3xl left-5 text-left">Écrans et Moniteurs PC</h2>
+                  <div class="promotion1 absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-700 text-white text-lg  p-4 opacity-0 hover:opacity-100  rounded-full px-10 border-inherit border-4 bg-transparent" >j'achet</div>
+              </div>
+          </div>
+          <br>
+          <div class="vrcf flex justify-evenly items-center flex-wrap">
+              <div class="vrcf1 ml-10 flex flex-col">
+                  <div class="p1 text-black font-Lilita text-6xl w-[604px] h-[50px] text-left drop-shadow-xl">
+                      <p>ASUS TUF DASH F15</p>
+                  </div>
+                  <div class="p2 text-black  font-Luckiest text-3xl w-[550px]  text-left">
+                      <p>L'ÉLAN DE LA VICTOIRE</p>
+                  </div>
+                  <div class="p2 text-white  font-Luckiest text-5xl w-[550px]  text-left">
+                      <p>UN TOUT NOUVEAUDESIGN</p>
+                  </div>
+                  <a class="text-white font-metrophobic text-20 font-normal py-5 px-10 rounded-sm bg-black  no-underline w-fit ml-48" href=""> COMMENCER À ACHETER > </a>
+              </div>
+              <br>
+              <img src="./Untitled.png" alt="" class="w-[598px] h-[475px] rounded-lg">
+          </div>
+          <h2 class="off font-monofett text-9xl font  ">FAQ!</h2>
+          <br><br>
+          <div class="questions">
+                  <div class="all flex flex-col justify-center items-center gap-11 ">
+                    <div class="alinall">
+                      <div class="faq bg-black shadow-white rounded-lg py-5 w-[1000px]">
+                        <div class="qsts text-white text-2xl">
+                          <span>Les produits sont-ils tous en stock ?</span>
+                          <img src="image/plus.png" alt="" />
+                        </div>
+                        <div class="answer text-white text-2xl"> Pour vous inscrire à ShapeShifters, rendez-vous sur notre page d'inscription, remplissez le formulaire en fournissant vos informations personnelles, choisissez l'abonnement qui vous convient, et suivez les étapes pour finaliser votre inscription. Vous pouvez également vous inscrire en visitant l'une de nos succursales. </div>
+                      </div>
+                      <br>
+                      <div class="faq bg-black shadow-white rounded-lg py-5 w-[1000px]">
+                        <div class="qsts text-white text-2xl">
+                          <span>Comment puis-je effectuer le paiement de mon abonnement ?</span>
+                          <img src="image/plus.png" alt="" />
+                        </div>
+                        <div class="answer text-white text-2xl">
+                          Vous pouvez effectuer le paiement de votre abonnement en ligne en
+                          utilisant différentes options de paiement, y compris les cartes de
+                          crédit et d'autres méthodes de paiement sécurisées. Les détails de
+                          paiement sont gérés via votre compte en ligne.
+                        </div>
+                      </div>
+                      <br>
+                      <div class="faq bg-black shadow-white rounded-lg py-5 w-[1000px] ">
+                        <div class="qsts text-white text-2xl">
+                          <span>Je peux payer en plusieurs fois ?</span>
+                          <img src="image/plus.png" alt="" />
+                        </div>
+                        <div class="answer text-white text-2xl">
+                          Nos heures d'ouverture varient en fonction de l'emplacement de
+                          notre salle de sport. Vous pouvez consulter les heures d'ouverture
+                          spécifiques sur notre site web ou en nous contactant.
+                        </div>
+                      </div>
+                      <br>
+                      <div class="faq bg-black shadow-white rounded-lg py-5 w-[1000px]">
+                        <div class="qsts text-white text-2xl">
+                          <span>Comment suivre mon colis ?</span>
+                          <img src="image/plus.png" alt="" />
+                        </div>
+                        <div class="answer text-white text-2xl">
+                          Vous pouvez contacter notre service client en utilisant les
+                          informations de contact disponibles sur notre site web. Nous
+                          sommes là pour répondre à toutes vos questions et résoudre vos
+                          problèmes.
+                        </div>
+                      </div>
+                      <br>
+                      <div class="faq bg-black shadow-white rounded-lg py-5 w-[1000px]">
+                          <div class="qsts text-white text-2xl text" >
+                            <span>Comment annuler ou modifier ma commande ?</span>
+                            <img src="image/plus.png" alt="" />
+                          </div>
+                          <div class="answer text-white text-2xl">
+                            Vous pouvez contacter notre service client en utilisant les
+                            informations de contact disponibles sur notre site web. Nous
+                            sommes là pour répondre à toutes vos questions et résoudre vos
+                            problèmes.
+                          </div>
+                        </div>
+                        <br>
+                        <div class="faq bg-black shadow-white rounded-lg  py-5 w-[1000px]">
+                          <div class="qsts text-white text-2xl" >
+                            <span>J’ai perdu mon mot de passe ?</span>
+                            <img src="image/plus.png" alt="" />
+                          </div>
+                          <div class="answer text-white text-2xl">
+                            Vous pouvez contacter notre service client en utilisant les
+                            informations de contact disponibles sur notre site web. Nous
+                            sommes là pour répondre à toutes vos questions et résoudre vos
+                            problèmes.
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+          </div>
+          <br><br>
+            <div class="cartTab">
+              <div>
+                  <h1>Shopping Cart</h1>
+                  <button class="close"><img src="image/close.png" alt="close"></button>
+              </div>
+              <div class="listCart">
+              </div>
+              <div class="btn">
+                  <button class="close"><a href="checkout.html">valider</a></button>
+                  <button class="checkOut"><a href="checkout.html">CHECKOUT</a></button>
+              </div>
+          </div>
+          <div class="cartFavor">
+              <div>
+                  <h1>Favorites products</h1>
+                  <button class="closeFavor"><img src="image/close.png" alt="close"></button>
+              </div>
+              <div class="listFavor">
+              </div>
+              <div class="btn">
+                  <button class="checkOutFavor"><a href="checkout.html" class="out">Vlider</a></button>
+                  <button class="checkOut"><a href="checkout.html" class="out">CHECKOUT</a></button>
+              </div>
+          </div>
+          <br><br>
+          <footer>
+              <div class="flex justify-around items-center flex-wrap">
+                  <hr class=" border-2 border-red-800  w-[500px]">
+                  <h1 class="font-zen-dots  text-white text-5xl">NEED HELP ?</h1> 
+                  <hr class=" border-2 border-red-800  w-[500px]">
+              </div>
+              <br>
+              <div class="flex justify-evenly m-auto  flex-wrap">
+                  <div class="text-left">
+                      <h2 class="text-white text-3xl font-zen-dots">A COMPLETE FAQ</h2>
+                      <hr class="border-2 border-red-800  w-[150px]">
+                      <h3 class="text-white text-3xl font-metrophobic">AND DETAILES ANSWERS</h3>
+                      <p class="text-white text-[20px] font-metrophobic ">Others may have had the same questions</p>
+                      <br>
+                      <a class="text-red-600 text-3xl font-metrophobic px-5 py-1 border-4 border-red-600 rounded-[20px] " href="home.html">FAQ</a>
+                      <br><br>
+                      <p class="text-white text-[20px] font-metrophobic">Did not find what you were looking for? Contact us!</p>
+                      <br>
+                      <a class="text-red-600 text-3xl font-metrophobic px-5 py-1 border-4 border-red-600 rounded-[20px]" href="contactus.html">Contact-Us</a>
+                  </div>
+                  <div class="h-[300px] w-1 bg-white">
+                  </div>
+                  <div class=" text-right relative">
+                      <h2 class="text-white text-3xl font-zen-dots"> GAMING EXPERTS</h2>
+                      <hr class="border-2 border-red-800 absolute right-[0px] w-[150px] ">
+                      <h3 class="text-white text-3xl font-metrophobic">AT YOUR SERVIS</h3>
+                      <p class="text-white text-[20px] font-metrophobic"> By Phone(Mondau-Friday: 9h-13h30)</p>
+                      <br>
+                      <a class="text-red-600 text-3xl px-5 py-1 border-4 border-red-600 rounded-[20px]">+212**********5<a>
+                      <br><br>
+                      <p class="text-white text-[20px] font-metrophobic">CHECK US OUT ON SOCIAL MEDIA</p>
+                      <div class="flex justify-center items-center">
+                          <img src="fb.png" class="w-[60px] h-[60px]" alt="fb">
+                          <img src="wts.png" class="w-[60px] h-[60px]" alt="wts">
+                          <img src="insta1.png" class="w-[60px] h-[60px]" alt="inst">
+                      </div>
+                  </div>
+              </div>
+              <p class="text-white text-[20px] font-metrophobic items-center">ALL RIGHTS RESERVED © Nightcrawler 2022</p>
+          </footer>
+  </div>
+  <script>
+    let botton = document.querySelector('.botton');
+    window.onscroll=function(){
+        if (scrollY>200){
+            botton.style.display='flex';
+        } else{
+            botton.style.display='none';
+        }
+    }
+
+    botton.onclick = function(){
+        scroll({
+            left: 0,
+            top: 0,
+            behavior: "smooth"
+        })
+    }
+</script>
+  <script src="Untitled-1222.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
