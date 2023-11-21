@@ -130,10 +130,9 @@ let products = [
         "price": 200,
         "image": "image/4.png",
         dataCategorie: "accessoires",
-        dataCategorie: "pcGamer"
-        ,
+        dataCategorie: "pcGamer",
         "colorOptions": ["red", "blue", "green"], 
-    "companyOptions": ["Samsung", "Sony", "AZUZ"] 
+        "companyOptions": ["Samsung", "Sony", "AZUZ"] 
     },
     {
         "id": 5,

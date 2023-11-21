@@ -1135,6 +1135,7 @@ body.showFavorites .container{
 .content {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .left-content {
@@ -1157,6 +1158,7 @@ img {
 .container {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .vertical-image {

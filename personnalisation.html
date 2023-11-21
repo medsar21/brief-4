@@ -17,33 +17,32 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <div class="title">ARK</div>
-            <div class="menu-toggle">
-                <div class="burger-line"></div>
-                <div class="burger-line"></div>
-                <div class="burger-line"></div>
-            </div>
-            <div class="nav">
-                <a href="home.html" class="menu">Home</a>
-                <a href="catalogue.html" class="menu">Catalogue</a>
-                <a href="personnalisation.html" class="menu">Personnalisation</a>
-                <a href="checkout.html" class="menu">Devis</a>
-                <a href="about.html" class="menu">About Us</a>
-            </div>
-            <div class="icon-cart">
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1"/>
-                </svg>
-                <span>0</span>
-            </div>
-            <div class="icon-favor">
-                <img src="image/Pixel Heart.png" alt="Heart">
-                <span>0</span>
-            </div>
-            <a href="contactus.html" class="contact">Contact Us</a>
-            </div>
-        </header>
+        <header class="flex justify-between items-center p-4">
+          <div class="title text-4xl font-Akronim">ARK</div>
+          <div class="menu-toggle flex flex-col cursor-pointer md:hidden">
+              <div class="burger-line w-6 h-px bg-white my-1"></div>
+              <div class="burger-line w-6 h-px bg-white my-1"></div>
+              <div class="burger-line w-6 h-px bg-white my-1"></div>
+          </div>
+          <nav class="nav hidden md:flex flex-row space-x-9">
+              <a href="home.html" class="menu">Home</a>
+              <a href="catalogue.html" class="menu">Catalogue</a>
+              <a href="personnalisation.html" class="menu">Personnalisation</a>
+              <a href="checkout.html" class="menu">Devis</a>
+              <a href="about.html" class="menu">About Us</a>
+          </nav>
+          <div class="icon-cart relative">
+              <svg class="w-30 h-33" aria-hidden="true" fill="none" viewBox="0 0 18 20" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1"/>
+              </svg>
+              <span class="absolute bg-red-500 w-6 h-6 flex items-center justify-center rounded-full text-white top-1/4 right-0">0</span>
+          </div>
+          <div class="icon-favor relative">
+              <img class="w-50 h-38" src="image/Pixel Heart.png" alt="Heart">
+              <span class="absolute bg-red-500 w-6 h-6 flex items-center justify-center rounded-full text-white top-1/4 right-0">0</span>
+          </div>
+          <a href="contactus.html" class="contact text-lg border-3 border-red-500 rounded-full px-6 py-2 flex items-center justify-center">Contact Us</a>
+      </header>
         <div class="botton">^</div>
 
         <div id="catalogue hidden">
@@ -89,9 +88,9 @@
         </div>
         <button id="apply-customization " class="text-white font-DoppioOne text-20 font-normal h-14 px-20 rounded-full bg-black  no-underline w-fit">Apply Customization</button>
         <div class="colors">
-            <div class="color1"></div>
-            <div class="color2"></div>
-            <div class="color3"></div>
+            <img onclick="name.src=this.src" src="image/black.jpg" alt="" class="imgcolor">
+            <img src="image/red.jpg" alt="" class="imgcolor">
+            <img src="image/oronge.jpg" alt="" class="imgcolor">
         </div>
     </div>
 
@@ -250,7 +249,7 @@
             const selectedProduct = products.find((product) => product.id === parseInt(selectedProductId));
 
             productDisplay.innerHTML = `
-                <img src="${selectedProduct.image}" alt="${selectedProduct.name}" style="border: 2px solid ${color};">
+                <img class="imgPer " name="colors" src="${selectedProduct.image}" alt="${selectedProduct.name}" style="border: 2px solid ${color};">
                 <h2 class="text-white text-3xl">${selectedProduct.name}</h2>
                 <p class="text-white text-3xl">Price: $${selectedProduct.price}</p>
                 <p class="text-white text-3xl">Customization: Color - ${color}${ram ? `, RAM - ${ram}` : ""}${storage ? `, Storage - ${storage}` : ""}${company ? `, Company - ${company}` : ""}</p>

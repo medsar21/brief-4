@@ -179,7 +179,7 @@
                 }
             </script>
 
-            <script src="app.js"></script>
+             <script src="app.js"></script>
             <script>
                 
                 document.addEventListener("DOMContentLoaded", function () {
@@ -191,59 +191,43 @@
                     });
                 });
 
+                
 
-                function validerFormulaire() {
-                  const nom = document.getElementById("lname").value;
-                  const prenom = document.getElementById("fname").value;
-                  const telephone = document.getElementById("number").value;
-                  const cin = document.getElementById("cin").value;
-                  const email = document.getElementById("email").value;
-                  const message = document.getElementById("message").value;
-              
-                  // Fonctions de validation
-                  function estNomPrenomValide(nomPrenom) {
-                      const regex = /^[a-zA-ZÀ-ÿ\s']{3,}$/;
-                      return regex.test(nomPrenom);
-                  }
-                  
-                  function estNumeroTelephoneValide(telephone) {
-                      const regex = /^\+212\d{9}$/;
-                      return regex.test(number);
-                  }
-               
-                  function estCINValide(cin) {
-                      const regex = /^[A-Z]\d{5}$/;
-                      return regex.test(cin);
-                  }
-              
-                  function estEmailValide(email) {
-                      const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-                      return regex.test(email);
-                  }
-              
-                  function estMessageValide(message) {
-                    const regex = /^[a-zA-ZÀ-ÿ\s']{50,}$/;
-                      return regex.test(message);
-                  }
-              
-                  if (
-                      estNomPrenomValide(nom) &&
-                      estNomPrenomValide(prenom) &&
-                      estNumeroTelephoneValide(telephone) &&
-                      estCINValide(cin) &&
-                      estEmailValide(email) &&
-                      estMessageValide(message)
-              
-              
-                      
-                  ) {
-                      alert("Formulaire valide. Les données peuvent être soumises.");
-                      return true;
-                  } else {
-                      alert("Le formulaire contient des données non valides. Veuillez corriger.");
-                      return false;
-                  }
-              }
-                </script>
+                document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const firstName = document.getElementById("fname").value;
+        const lastName = document.getElementById("lname").value;
+        const email = document.getElementById("email").value;
+        const cin = document.getElementById("cin").value;
+        const phone = document.getElementById("number").value;
+        const message = document.getElementById("message").value;
+
+        const nameRegex = /^[a-zA-Z ]{3,}$/;
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        const cinRegex = /^[a-zA-Z0-9]{5}$/;
+        const phoneRegex = /^\+212\d{9}$/;
+        const messageRegex = /^.{3,}$/;
+
+        if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
+            alert("First name and last name must have at least 3 characters and contain only letters.");
+        } else if (!emailRegex.test(email)) {
+            alert("Invalid email address.");
+        } else if (!cinRegex.test(cin)) {
+            alert("Invalid CIN (5 characters expected).");
+        } else if (!phoneRegex.test(phone)){
+            alert("Invalid phone number (must start with +212 and have 9 digits).");
+        } else if (!messageRegex.test(message)){
+            alert("Invalid message, enter at least three characters.");
+        } else {
+            alert("Valid form. Data can be submitted.");
+        }
+    });
+});
+
+    </script>
 </body>
 </html>
